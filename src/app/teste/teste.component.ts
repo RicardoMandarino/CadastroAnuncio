@@ -2,6 +2,9 @@ import { Component } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { UserService } from '../backend/user.service';
 import { ActivatedRoute, Route, Router } from '@angular/router';
+import { NzUploadChangeParam } from 'ng-zorro-antd/upload';
+import { NzMessageService } from 'ng-zorro-antd/message';
+import { NzUploadComponent, NzUploadModule } from 'ng-zorro-antd/upload';
 
 @Component({
   selector: 'app-teste',
@@ -15,7 +18,8 @@ export class TesteComponent {
     private formBuilder: FormBuilder,
     private userService: UserService,
     private activadeRoute: ActivatedRoute,
-    private router: Router
+    private router: Router,
+    private msg: NzMessageService
   ){
     this.formGroup = this.formBuilder.group({
       name: ['',Validators.required],
@@ -41,5 +45,18 @@ console.log(this.formGroup.value);
       this.router.navigate([``]);
     });
     
+  }
+
+
+
+  handleChange(info: NzUploadChangeParam): void {
+    if (info.file.status !== 'uploading') {
+      console.log(info.file, info.fileList);
+    }
+    if (info.file.status === 'done') {
+      this.msg.success(`${info.file.name} file uploaded successfully`);
+    } else if (info.file.status === 'error') {
+      this.msg.error(`${info.file.name} file upload failed.`);
+    }
   }
 }

@@ -111,6 +111,20 @@ button:hover {
 .flex input {
     margin-right: 8px;
 }
+
+/*botão upload*/
+.button-upload{
+    background-color: #6B46C1;
+    color: #ffffff ;
+    margin-bottom: 10px;
+    border-radius: 4px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+
 /* botão de cadastrar anuncio */
 button[type="submit"] {
     background-color: #6B46C1;

@@ -5,10 +5,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="shortcut icon" href="../../assets/images/tab-icon.png" type="image/x-icon">
-    <!--link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="cadastro-produto.css">
-    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
-    <script src="js-cadastro-anuncio.js"></script>-->
     <title>Cadastro de Anúncio</title>
 </head>
 
@@ -56,7 +52,6 @@
                         </mat-button-toggle-group>
                 </div>
             </div>
-
             <!-- Caixas de texto -->
             <div class="mb-4 flex flex-col md:flex-row">
                 <div  id="Tipo" class="mb-4 md:mb-0 md:mr-4 w-full">
@@ -70,13 +65,31 @@
                     <label for="valor" class="block text-gray-700 text-sm font-bold mb-2">Valor:</label>
                     <nz-form-control><input placeholder="Valor do Produto" formControlName="price" type="text" id="valor" name="valor" class="w-full px-3 py-2 border rounded-md"></nz-form-control>
                 </div>
-                <div class="w-full">
                     <!-- Quantidade de Voluntários -->
-                    <label for="quantidadeVoluntarios" class="block text-gray-700 text-sm font-bold mb-2">Quantidade de
+                    <div class="Quantidade-Voluntario">
+                     <label for="quantidadeVoluntarios" class="block text-gray-700 text-sm font-bold mb-2">Quantidade de
                         Voluntários:</label>
                     <nz-form-control><input placeholder="Digite a quantidade minima de Voluntários" formControlName="buyers" type="text" id="quantidadeVoluntarios" name="quantidadeVoluntarios"
                         class="w-full px-3 py-2 border rounded-md"></nz-form-control>
-                </div>
+                    </div>
+                    <div>
+                        <label for="quantidadeVoluntarios" class="block text-gray-700 text-sm font-bold mb-2">Desconto por
+                           Voluntário:</label>
+                       <nz-form-control><input placeholder="Digite o desconto para cada voluntário" formControlName="buyers" type="text"  name="descontoVoluntarios"
+                           class="w-full px-3 py-2 border rounded-md"></nz-form-control>
+                       </div>
+            </div>
+            <div>
+                <nz-upload
+                  nzAction="https://www.mocky.io/v2/5cc8019d300000980a055e76"
+                  [nzHeaders]="{ authorization: 'authorization-text' }"
+                  (nzChange)="handleChange($event)"
+                >
+                  <button class="button-upload" nz-button>
+                    <i nz-icon nzType="upload"></i>
+                    Carregue a imagem do anuncio
+                  </button>
+                </nz-upload>
             </div>
 
             <!-- Botão de Envio -->
