@@ -2,9 +2,10 @@ import { Component } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { UserService } from '../backend/user.service';
 import { ActivatedRoute, Route, Router } from '@angular/router';
-import { NzUploadChangeParam } from 'ng-zorro-antd/upload';
+import { NzUploadChangeParam, NzUploadFile } from 'ng-zorro-antd/upload';
 import { NzMessageService } from 'ng-zorro-antd/message';
 import { NzUploadComponent, NzUploadModule } from 'ng-zorro-antd/upload';
+import { STRING_TYPE } from '@angular/compiler';
 
 @Component({
   selector: 'app-teste',
@@ -29,25 +30,26 @@ export class TesteComponent {
       type:['',Validators.required],
       category_id: ['1',Validators.required],
       store_id: ['1',Validators.required],
-      rating: ['1',Validators.required]
-
+      rating: ['1',Validators.required],
+      file: ['',Validators.required],
+      discount: ['',Validators.required]
     })
   
   }
   public submit() {
+console.log(this.formGroup.value);
+
     if (!this.formGroup.valid) {
-      alert('Invalido');
+      alert('Preencha Corretamente');
       return;
     }
-console.log(this.formGroup.value);
+
 
     this.userService.post(this.formGroup.value).subscribe((result: any) => {
       this.router.navigate([``]);
     });
     
   }
-
-
 
   handleChange(info: NzUploadChangeParam): void {
     if (info.file.status !== 'uploading') {
@@ -58,5 +60,6 @@ console.log(this.formGroup.value);
     } else if (info.file.status === 'error') {
       this.msg.error(`${info.file.name} file upload failed.`);
     }
+    this.formGroup.get('file').setValue(info.file.response.data.path);    
   }
 }

@@ -8,38 +8,38 @@
     <title>Cadastro de Anúncio</title>
 </head>
 
-<body class="font-sans bg-gray-100 min-h-screen">
+<body>
     <header class="header-logo">
-        <div class="container mx-auto py-4">
-            <div class="flex items-center">
+        <div>
+            <div>
                 <img src="../../assets/img/logo.png" alt="logo" class="h-8">
             </div>
         </div>
     </header>
-    <div class="container mx-auto py-8">
-        <h1 class="text-2xl md:text-3xl lg:text-4xl font-semibold mb-6">O que você está anunciando?</h1>
-        <form [formGroup]="formGroup" class="max-w-md mx-auto bg-white p-4 md:p-8 rounded-lg shadow-md">
+    <div class="container">
+        <h1>O que você está anunciando?</h1>
+        <form [formGroup]="formGroup">
             <!-- Título do Anúncio -->
-            <div class="mb-4">
+            <div>
                 <nz-form-control nzErrorTip="Digite o titulo do produto">
-                <label for="titulo" class="block text-gray-700 text-sm font-bold mb-2">Título:</label>
+                <label for="titulo">Título:</label>
                 <input formControlName="name" type="text" id="titulo" name="titulo" class="w-full px-3 py-2 border rounded-md" placeholder="Coloque o titulo do anuncio">
                 </nz-form-control>
             </div>
 
             <!-- Descrição do Anúncio -->
-            <div class="mb-4">
-                <label for="descricao" class="block text-gray-700 text-sm font-bold mb-2">Descrição:</label>
+            <div>
+                <label for="descricao">Descrição:</label>
                 <nz-form-control>
                 <textarea formControlName="description" id="descricao" name="descricao" rows="4"
-                placeholder="Descreva seu Anúncio" class="w-full px-3 py-2 border rounded-md"></textarea>
+                placeholder="Descreva seu Anúncio"></textarea>
                 </nz-form-control>
             </div>
 
             <!-- Categorias -->
             <div class="categoria-button">                
-                <label class="block text-gray-700 text-sm font-bold mb-2">Categorias:</label>
-                <div class="">
+                <label>Categorias:</label>
+                <div>
                         <mat-button-toggle-group formControlName="category_id" class="categoria-button-toggle">
                             <mat-button-toggle  class="button-toggle" value="1">Para sua casa</mat-button-toggle>
                             <mat-button-toggle  class="button-toggle" value="2">Eletrônicos</mat-button-toggle>
@@ -53,38 +53,38 @@
                 </div>
             </div>
             <!-- Caixas de texto -->
-            <div class="mb-4 flex flex-col md:flex-row">
-                <div  id="Tipo" class="mb-4 md:mb-0 md:mr-4 w-full">
+            <div>
+                <div  id="Tipo">
                     <!-- Tipo-->
-                    <label for="tipo" class="block text-gray-700 text-sm font-bold mb-2">Tipo:</label>
-                    <nz-form-control><input placeholder="Especifique o tipo do Anúncio" formControlName="type" type="text" id="tipo" name="tipo" class="w-full px-3 py-2 border rounded-md"></nz-form-control> 
+                    <label for="tipo">Tipo:</label>
+                    <nz-form-control><input placeholder="Especifique o tipo do Anúncio" formControlName="type" type="text" id="tipo" name="tipo"></nz-form-control> 
                     
                 </div>
-                <div class="mb-4 md:mb-0 md:mr-4 w-full">
+                <div>
                     <!-- Valor -->
-                    <label for="valor" class="block text-gray-700 text-sm font-bold mb-2">Valor:</label>
-                    <nz-form-control><input placeholder="Valor do Produto" formControlName="price" type="text" id="valor" name="valor" class="w-full px-3 py-2 border rounded-md"></nz-form-control>
+                    <label for="valor">Valor:</label>
+                    <nz-form-control><input placeholder="Valor do Produto" formControlName="price" type="text" id="valor" name="valor"></nz-form-control>
                 </div>
                     <!-- Quantidade de Voluntários -->
                     <div class="Quantidade-Voluntario">
-                     <label for="quantidadeVoluntarios" class="block text-gray-700 text-sm font-bold mb-2">Quantidade de
+                     <label for="quantidadeVoluntarios">Quantidade de
                         Voluntários:</label>
                     <nz-form-control><input placeholder="Digite a quantidade minima de Voluntários" formControlName="buyers" type="text" id="quantidadeVoluntarios" name="quantidadeVoluntarios"
-                        class="w-full px-3 py-2 border rounded-md"></nz-form-control>
+                        ></nz-form-control>
                     </div>
                     <div>
-                        <label for="quantidadeVoluntarios" class="block text-gray-700 text-sm font-bold mb-2">Desconto por
+                        <label for="descontoVoluntarios" >Desconto por
                            Voluntário:</label>
-                       <nz-form-control><input placeholder="Digite o desconto para cada voluntário" formControlName="buyers" type="text"  name="descontoVoluntarios"
-                           class="w-full px-3 py-2 border rounded-md"></nz-form-control>
+                       <nz-form-control><input placeholder="Digite o desconto para cada voluntário" formControlName="discount" type="text"  name="descontoVoluntarios"
+                           ></nz-form-control>
                        </div>
             </div>
+            <!--Botão Upload Imagem-->
             <div>
                 <nz-upload
-                  nzAction="https://www.mocky.io/v2/5cc8019d300000980a055e76"
-                  [nzHeaders]="{ authorization: 'authorization-text' }"
-                  (nzChange)="handleChange($event)"
-                >
+                  nzAction="https://localhost:7191/file/Upload" [nzMultiple]="true"
+                  [nzHeaders]="{ authorization: '' }"
+                  (nzChange)="handleChange($event)"       >
                   <button class="button-upload" nz-button>
                     <i nz-icon nzType="upload"></i>
                     Carregue a imagem do anuncio

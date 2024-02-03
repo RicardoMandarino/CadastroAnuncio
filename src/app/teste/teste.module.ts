@@ -6,10 +6,10 @@ import { NzButtonModule } from 'ng-zorro-antd/button';
 import { RouterModule } from '@angular/router';
 import { NzFormModule } from 'ng-zorro-antd/form';
 import {MatButtonToggleModule,MatButtonToggle} from '@angular/material/button-toggle';
-import { NzUploadModule } from 'ng-zorro-antd/upload';
+import {NzUploadModule } from 'ng-zorro-antd/upload';
+import { NzUploadChangeParam } from 'ng-zorro-antd/upload';
 import { Component } from '@angular/core';
 import { NzMessageService } from 'ng-zorro-antd/message';
-import { NzUploadChangeParam } from 'ng-zorro-antd/upload';
 
 const MaterialComponents = [
   MatButtonToggleModule
